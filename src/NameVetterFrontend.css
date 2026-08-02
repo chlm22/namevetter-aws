@@ -1,10 +1,24 @@
+html, 
+body, 
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: none; /* This overrides the default Vite max-width! */
+  min-height: 100svh;
+}
 /* =========================================
    CSS Variables (Theming & Font Sizes)
    ========================================= */
 .vetter-wrapper {
   /* Default Light Theme Colors */
-  --bg-color: #f9f9f9;
-  --container-bg: #ffffff;
+  
+  /* SET YOUR LIGHT BACKGROUND IMAGE HERE */
+  --app-bg-image: url('./assets/backgroundimg.png'); 
+  
+  /* Made the container slightly transparent for the glass effect */
+  --container-bg: rgba(255, 255, 255, 0.75); 
+  
   --text-color: #333333;
   --border-color: #cccccc;
   --primary-color: #007bff;
@@ -15,11 +29,15 @@
   /* Default Typography */
   --font-base: 16px;
 
-  /* Apply defaults */
-  background-color: var(--bg-color);
+  /* Apply defaults for the full screen wrapper */
+  background-image: var(--app-bg-image);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
   color: var(--text-color);
   font-size: var(--font-base);
-  min-height: 100vh;
+  min-height: 100svh; /* Using svh for better mobile rendering */
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,10 +47,14 @@
 
 /* Dark Mode Overrides */
 .vetter-wrapper.theme-dark {
-  --bg-color: #121212;
-  --container-bg: #1e1e1e;
+  /* SET YOUR DARK BACKGROUND IMAGE HERE */
+  --app-bg-image: url('./assets/darkeartheart.png'); 
+  
+  /* Made the dark container slightly transparent for the glass effect */
+  --container-bg: rgba(30, 30, 30, 0.85); 
+  
   --text-color: #f1f1f1;
-  --border-color: #444444;
+  --border-color: rgba(255, 255, 255, 0.2); /* Softened the border */
   --primary-color: #4da3ff;
   --primary-hover: #80bfff;
   --error-bg: #4d0000;
@@ -44,20 +66,32 @@
   --font-base: 14px;
 }
 .vetter-wrapper.font-large {
-  --font-base: 22px; /* Bumped this up slightly so you can really feel the difference! */
+  --font-base: 22px; 
 }
 
 /* =========================================
-   Layout & Container
+   Layout & Container (The Glass Panel)
    ========================================= */
 .vetter-container {
   background-color: var(--container-bg);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  
+  /* The Glassmorphism Blur Effect */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
   transition: all 0.3s ease;
+}
+
+/* Add a slightly different border/shadow for dark mode */
+.theme-dark .vetter-container {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* LOGO STYLING */
@@ -67,16 +101,14 @@
   margin-bottom: 15px;
 }
 .vetter-logo {
-  max-width: 150px; /* Adjust this to make your logo bigger or smaller! */
+  max-width: 150px; 
   height: auto;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  /* CHANGED: Forces color to follow the theme */
   color: var(--text-color); 
-  /* CHANGED: Uses 'em' to scale with the wrapper font-base */
   font-size: 1.5em; 
 }
 
@@ -95,10 +127,15 @@ h2 {
   padding: 5px 10px;
   border-radius: 6px;
   border: 1px solid var(--border-color);
-  background-color: var(--container-bg);
+  /* Uses solid background so dropdown text remains readable */
+  background-color: var(--bg-color, #ffffff); 
   color: var(--text-color);
-  font-size: 0.85em; /* Scalable */
+  font-size: 0.85em; 
   cursor: pointer;
+}
+
+.theme-dark .settings-bar select {
+  background-color: #1e1e1e;
 }
 
 /* =========================================
@@ -123,9 +160,14 @@ h2 {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid var(--border-color);
-  background-color: var(--container-bg);
+  /* Solid background for select elements to prevent transparency overlap issues */
+  background-color: var(--bg-color, #ffffff);
   color: var(--text-color);
-  font-size: 1em; /* Scalable */
+  font-size: 1em; 
+}
+
+.theme-dark .lang-select {
+  background-color: #1e1e1e;
 }
 
 .swap-button {
@@ -165,11 +207,16 @@ h2 {
   padding: 12px 40px 12px 15px; 
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  background-color: var(--container-bg);
+  /* Make the input field slightly transparent to match the aesthetic */
+  background-color: rgba(255, 255, 255, 0.5); 
   color: var(--text-color);
-  font-size: 1em; /* Scalable */
+  font-size: 1em; 
   box-sizing: border-box;
   transition: border-color 0.2s ease;
+}
+
+.theme-dark .vetter-input {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .vetter-input:focus {
@@ -204,7 +251,7 @@ h2 {
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 1em; /* Scalable */
+  font-size: 1em; 
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -230,31 +277,36 @@ h2 {
   color: var(--error-text);
   border: 1px solid var(--error-text);
   border-radius: 8px;
-  font-size: 0.95em; /* Scalable */
+  font-size: 0.95em; 
 }
 
 .vetter-result {
   margin-top: 25px;
   padding: 20px;
-  background-color: var(--bg-color);
+  /* Slightly translucent result box */
+  background-color: rgba(255, 255, 255, 0.6); 
   border: 1px solid var(--border-color);
   border-radius: 8px;
+}
+
+.theme-dark .vetter-result {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .vetter-result h3 {
   margin-top: 0;
   margin-bottom: 15px;
-  font-size: 1.2em; /* Scalable */
+  font-size: 1.2em; 
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px;
-  color: var(--text-color); /* explicitly setting theme color */
+  color: var(--text-color); 
 }
 
 .vetter-pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   font-family: monospace;
-  font-size: 0.9em; /* Scalable */
+  font-size: 0.9em; 
   margin: 0;
   color: var(--text-color);
 }

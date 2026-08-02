@@ -2,22 +2,17 @@ import { useState } from "react";
 import "./NameVetterFrontend.css";
 import SafetyCard from './SafetyCard';
 
-// IMPORT YOUR IMAGES HERE! 
-// Adjust the relative path depending on where this JSX file is inside your project
-import lightImage from "../images/backgroundimg.png"; 
-import darkImage from "../images/darkeartheart.png";
-
 const SUPPORTED_LANGS = [
-  { code: "en", label: "English" },
-  { code: "kr", label: "Korean" },
-  { code: "de", label: "German" },
-  { code: "es", label: "Spanish" },
-  { code: "fr", label: "French" },
-  { code: "ru", label: "Russian" },
-  { code: "zh-CN", label: "Chinese (Mandarin)" },
-  { code: "hi", label: "Hindi" },
-  { code: "ar", label: "Arabic" },
-  { code: 'ja', label: 'Japanese' }
+{ code: "en", flag: "🇺🇸", label: "English" },
+  { code: "kr", flag: "🇰🇷", label: "Korean" },
+  { code: "de", flag: "🇩🇪", label: "German" },
+  { code: "es", flag: "🇪🇸", label: "Spanish" },
+  { code: "fr", flag: "🇫🇷", label: "French" },
+  { code: "ru", flag: "🇷🇺", label: "Russian" },
+  { code: "zh-CN", flag: "🇨🇳", label: "Chinese (Mandarin)" },
+  { code: "hi", flag: "🇮🇳", label: "Hindi" },
+  { code: "ar", flag: "🇸🇦", label: "Arabic" },
+  { code: "ja", flag: "🇯🇵", label: "Japanese" }
 ];
 
 export default function NameVetterFrontend() {
@@ -208,14 +203,16 @@ export default function NameVetterFrontend() {
       <div className="vetter-container">
         
         {/* Settings Bar */}
+  
         <div className="settings-bar">
+                  <p>Site Language</p>
           <select 
             value={uiLang} 
             onChange={(e) => setUiLang(e.target.value)}
             aria-label="Select Site Language"
           >
             {SUPPORTED_LANGS.map(lang => (
-              <option key={`ui-${lang.code}`} value={lang.code}>{lang.label}</option>
+              <option key={`ui-${lang.code}`} value={lang.code}>{lang.flag} {lang.label}</option>
             ))}
           </select>
 
@@ -239,15 +236,6 @@ export default function NameVetterFrontend() {
           </select>
         </div>
 
-        {/* DYNAMIC IMAGE RENDERING */}
-        <div className="logo-container">
-           <img 
-             src={theme === 'dark' ? darkImage : lightImage} 
-             alt="NameVetter Logo" 
-             className="vetter-logo" 
-           />
-        </div>
-
         <h2>{currentSiteTranslation.title}</h2>
         
         <form onSubmit={vetName} className="vetter-form-complex">
@@ -260,7 +248,7 @@ export default function NameVetterFrontend() {
               className="lang-select"
             >
               {SUPPORTED_LANGS.map(lang => (
-                <option key={`from-${lang.code}`} value={lang.code}>{lang.label}</option>
+                <option key={`from-${lang.code}`} value={lang.code}>{lang.flag} {lang.label}</option>
               ))}
             </select>
 
@@ -286,7 +274,7 @@ export default function NameVetterFrontend() {
               className="lang-select"
             >
               {SUPPORTED_LANGS.map(lang => (
-                <option key={`to-${lang.code}`} value={lang.code}>{lang.label}</option>
+                <option key={`to-${lang.code}`} value={lang.code}>{lang.flag} {lang.label}</option>
               ))}
             </select>
           </div>
@@ -331,7 +319,7 @@ export default function NameVetterFrontend() {
         )}
 
         {result && (
-          <div className="veter-result" aria-live="polite">
+          <div className="vetter-result" aria-live="polite">
             <h3>{currentSiteTranslation.resultTitle}</h3>
             <SafetyCard data={result} />
           </div>

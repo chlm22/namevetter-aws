@@ -11,6 +11,10 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
+  /* LIGHT MODE BACKGROUND IMAGE */
+  /* Make sure this path matches your file exactly! */
+  --app-bg-image: url('./assets/backgroundimg.png'); 
+
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -19,7 +23,7 @@
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
-  background: var(--bg);
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -43,15 +47,33 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+    /* DARK MODE BACKGROUND IMAGE */
+    /* Make sure this path matches your file exactly! */
+    --app-bg-image: url('./assets/darkeartheart.png');
   }
 
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
+  
+  /* DARK MODE GLASS PANEL */
+  .glass-panel {
+    background-color: rgba(22, 23, 29, 0.75); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
 }
 
 body {
   margin: 0;
+  
+  /* Full-screen background image rules */
+  background-image: var(--app-bg-image);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 #root {
@@ -59,11 +81,28 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  
+  /* The grey border and solid backgrounds have been entirely removed! */
+}
+
+/* LIGHT MODE GLASS PANEL */
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.7); 
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 40px; 
+  margin: auto; /* Keeps it perfectly centered */
+  
+  /* Optional: Set a max-width so the box doesn't get too wide on giant screens */
+  max-width: 800px;
+  width: 100%;
 }
 
 h1,
@@ -82,6 +121,7 @@ h1 {
     margin: 20px 0;
   }
 }
+
 h2 {
   font-size: 24px;
   line-height: 118%;
@@ -91,6 +131,7 @@ h2 {
     font-size: 20px;
   }
 }
+
 p {
   margin: 0;
 }
