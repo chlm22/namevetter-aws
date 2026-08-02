@@ -19,7 +19,7 @@ export default function NameVetterFrontend() {
   const [name, setName] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
 
   const [theme, setTheme] = useState("light");
   const [fontSize, setFontSize] = useState("medium");
@@ -111,8 +111,19 @@ title: "NameVetter",
       swapAria: "元の言語と翻訳先の言語を切り替える"}
   }; //const ui 
 
+  const currentSiteTranslation = ui[uiLang] || ui['en'];
+
+  const swapLangs = () =>{
+    setFromLang(toLang);
+    setToLang(fromLang);
+  }
+
+  const clearInput = () => {
+    setName('');
+  };
+
   //aws api gateway invoking url
-  const API_GATEWAY_URL = "";
+  const API_GATEWAY_URL = import.meta.env.VITE_API_GATEWAY_URL || "";
 
   const vetName = async (e) => {
     e.preventDefault();
@@ -144,7 +155,7 @@ title: "NameVetter",
     //this resets the stage by turning on the loading spinner/text
     //clears previous results (or previous errors) before reaching out to AWS
     setLoading(true);
-    setError(null);
+    setError('');
     setResult(null);
 
     //Sending a request to API Gatewat using the browser's built-in FETCH tool
@@ -166,4 +177,140 @@ title: "NameVetter",
       setLoading(false);
     }
   }; //const vetName = async(e)=>
+
+    return (
+    <div className={`vetter-wrapper theme-${theme} font-${fontSize}`}>
+      <div className="vetter-container">
+        
+        {/* Settings Bar */}
+        <div className="settings-bar">
+          <select 
+            value={uiLang} 
+            onChange={(e) => setUiLang(e.target.value)}
+            aria-label="Select Site Language"
+          >
+            {SUPPORTED_LANGS.map(lang => (
+              <option key={`ui-${lang.code}`} value={lang.code}>{lang.label}</option>
+            ))}
+          </select>
+
+          <select 
+            value={theme} 
+            onChange={(e) => setTheme(e.target.value)}
+            aria-label="Select Theme"
+          >
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+          </select>
+
+          <select 
+            value={fontSize} 
+            onChange={(e) => setFontSize(e.target.value)}
+            aria-label="Select Font Size"
+          >
+            <option value="small">Small Text</option>
+            <option value="medium">Medium Text</option>
+            <option value="large">Large Text</option>
+          </select>
+        </div>
+
+        <h2>{currentSiteTranslation.title}</h2>
+        
+        <form onSubmit={vetName} className="vetter-form-complex">
+          
+          {/* Language Swap Row */}
+          <div className="language-swap-row">
+            <select 
+              value={fromLang} 
+              onChange={(e) => setFromLang(e.target.value)}
+              aria-label="Origin Language"
+              className="lang-select"
+            >
+              {SUPPORTED_LANGS.map(lang => (
+                <option key={`from-${lang.code}`} value={lang.code}>{lang.label}</option>
+              ))}
+            </select>
+
+            {/* SVG Swap Button */}
+            <button 
+              type="button" 
+              onClick={swapLangs} 
+              className="swap-button"
+              aria-label={currentSiteTranslation.swapAria}
+              title={currentSiteTranslation.swapAria}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m16 3 4 4-4 4"/>
+                <path d="M20 7H4"/>
+                <path d="m8 21-4-4 4-4"/>
+                <path d="M4 17h16"/>
+              </svg>
+            </button>
+
+            <select 
+              value={toLang} 
+              onChange={(e) => setToLang(e.target.value)}
+              aria-label="Target Language"
+              className="lang-select"
+            >
+              {SUPPORTED_LANGS.map(lang => (
+                <option key={`to-${lang.code}`} value={lang.code}>{lang.label}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Input Row with Clear Button inside it */}
+          <div className="input-submit-row">
+            <div className="input-wrapper">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder={currentSiteTranslation.placeholder}
+                className="vetter-input"
+                required
+                aria-label={currentSiteTranslation.placeholder}
+              />
+              
+              {/* Only show the clear 'X' if there is text typed in */}
+              {name && (
+                <button
+                  type="button"
+                  className="clear-button"
+                  onClick={clearInput}
+                  aria-label={currentSiteTranslation.clearAria}
+                  title={currentSiteTranslation.clearAria}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                  </svg>
+                </button>
+              )}
+            </div>
+            
+            <button type="submit" disabled={loading} className="vetter-button">
+              {loading ? currentSiteTranslation.loading : currentSiteTranslation.button}
+            </button>
+          </div>
+        </form>
+
+        {error && (
+          <div className="vetter-error" role="alert">
+            <strong>{currentSiteTranslation.errorPrefix}</strong> {error}
+          </div>
+        )}
+
+        {/* Temporary raw JSON output until we build the SafetyCards */}
+        {result && (
+          <div className="vetter-result" aria-live="polite">
+            <h3>{currentSiteTranslation.resultTitle}</h3>
+            <pre className="vetter-pre">
+              {JSON.stringify(result, null, 2)}
+            </pre>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 } //export default function NameVetterFrontend()
+
