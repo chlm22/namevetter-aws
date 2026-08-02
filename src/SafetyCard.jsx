@@ -1,19 +1,17 @@
-import React from 'react';
 import './SafetyCard.css';
 
 export default function SafetyCard({ data }) {
   // If there's no data yet, don't render anything
   if (!data) return null;
 
-  // Extract the JSON properties returned from AWS Bedrock
-  // Adjust these variable names if your Bedrock JSON keys are different!
-  const { status, phonetics, nuance } = data;
+  // Extract the JSON properties correctly matched to the newly parsed state!
+  const { status, phonetic, nuance, translatedWord } = data;
 
   // Determine styles and icons based on the vetting status
   let statusClass = 'status-default';
   let icon = null;
 
-  if (status === 'SAFE') {
+  if (status === 'SAFE TO USE') {
     statusClass = 'status-safe';
     // SVG Checkmark
     icon = (
@@ -21,7 +19,7 @@ export default function SafetyCard({ data }) {
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
     );
-  } else if (status === 'IFFY') {
+  } else if (status === 'USE WITH CAUTION') {
     statusClass = 'status-iffy';
     // SVG Alert Triangle
     icon = (
@@ -31,7 +29,8 @@ export default function SafetyCard({ data }) {
         <line x1="12" y1="17" x2="12.01" y2="17"></line>
       </svg>
     );
-  } else if (status === 'AVOID') {
+  } else if (status === 'AVOID !!!' || status === 'AVOID!!!') {
+    // Added both spacings just in case the AI format fluctuates!
     statusClass = 'status-avoid';
     // SVG Stop/X 
     icon = (
@@ -53,10 +52,18 @@ export default function SafetyCard({ data }) {
       
       {/* Analysis Details Area */}
       <div className="safety-body">
-        {phonetics && (
+        
+        {translatedWord && (
+          <div className="safety-section">
+            <h5>Direct Translation</h5>
+            <p>{translatedWord}</p>
+          </div>
+        )}
+
+        {phonetic && (
           <div className="safety-section">
             <h5>Phonetics & Pronunciation</h5>
-            <p>{phonetics}</p>
+            <p>{phonetic}</p>
           </div>
         )}
         

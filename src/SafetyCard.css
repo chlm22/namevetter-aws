@@ -24,20 +24,20 @@
 
 /* Status Colors */
 .status-safe {
-  background-color: #28a745; /* Vivid Green */
+  background-color: #28a745; 
 }
 
 .status-iffy {
-  background-color: #ffc107; /* Warning Yellow */
-  color: #333333; /* Dark text for contrast on the yellow background */
+  background-color: #ffc107; 
+  color: #333333; 
 }
 
 .status-avoid {
-  background-color: #dc3545; /* Alert Red */
+  background-color: #dc3545; 
 }
 
 .status-default {
-  background-color: #6c757d; /* Neutral Gray fallback */
+  background-color: #6c757d; 
 }
 
 .status-icon {
@@ -48,7 +48,7 @@
 
 .status-text {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.25em; /* Scalable */
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -72,7 +72,7 @@
 .safety-section h5 {
   margin-top: 0;
   margin-bottom: 8px;
-  font-size: 0.9rem;
+  font-size: 0.9em; /* Scalable */
   color: var(--primary-color);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -82,5 +82,5 @@
   margin: 0;
   line-height: 1.6;
   color: var(--text-color);
-  font-size: 1rem;
+  font-size: 1em; /* Scalable */
 }

@@ -44,7 +44,7 @@
   --font-base: 14px;
 }
 .vetter-wrapper.font-large {
-  --font-base: 20px;
+  --font-base: 22px; /* Bumped this up slightly so you can really feel the difference! */
 }
 
 /* =========================================
@@ -60,10 +60,24 @@
   transition: all 0.3s ease;
 }
 
+/* LOGO STYLING */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.vetter-logo {
+  max-width: 150px; /* Adjust this to make your logo bigger or smaller! */
+  height: auto;
+}
+
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  /* CHANGED: Forces color to follow the theme */
+  color: var(--text-color); 
+  /* CHANGED: Uses 'em' to scale with the wrapper font-base */
+  font-size: 1.5em; 
 }
 
 /* =========================================
@@ -83,7 +97,7 @@ h2 {
   border: 1px solid var(--border-color);
   background-color: var(--container-bg);
   color: var(--text-color);
-  font-size: 0.85rem;
+  font-size: 0.85em; /* Scalable */
   cursor: pointer;
 }
 
@@ -111,7 +125,7 @@ h2 {
   border: 1px solid var(--border-color);
   background-color: var(--container-bg);
   color: var(--text-color);
-  font-size: 1rem;
+  font-size: 1em; /* Scalable */
 }
 
 .swap-button {
@@ -148,12 +162,12 @@ h2 {
 
 .vetter-input {
   width: 100%;
-  padding: 12px 40px 12px 15px; /* Extra padding on right for the X button */
+  padding: 12px 40px 12px 15px; 
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background-color: var(--container-bg);
   color: var(--text-color);
-  font-size: 1rem;
+  font-size: 1em; /* Scalable */
   box-sizing: border-box;
   transition: border-color 0.2s ease;
 }
@@ -190,7 +204,7 @@ h2 {
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1em; /* Scalable */
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -216,7 +230,7 @@ h2 {
   color: var(--error-text);
   border: 1px solid var(--error-text);
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.95em; /* Scalable */
 }
 
 .vetter-result {
@@ -230,16 +244,17 @@ h2 {
 .vetter-result h3 {
   margin-top: 0;
   margin-bottom: 15px;
-  font-size: 1.2rem;
+  font-size: 1.2em; /* Scalable */
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px;
+  color: var(--text-color); /* explicitly setting theme color */
 }
 
 .vetter-pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   font-family: monospace;
-  font-size: 0.9rem;
+  font-size: 0.9em; /* Scalable */
   margin: 0;
   color: var(--text-color);
 }
