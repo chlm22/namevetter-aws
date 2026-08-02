@@ -1,11 +1,19 @@
 //importing useState Hook from React Library
 import {useState} from 'react';
 
+
 export default function NameVetterFrontend(){
     const [name, setName] = useState('');
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    const [theme, setTheme] = useState('light');
+    const [fontSize, setFontSize] = useState('medium');
+    const [uiLang, setUiLang] = useState('en');
+
+    const [fromLang, setFromLang] = useState('en');
+    const [toLang, setToLang] = useState('kr');
 
     //aws api gateway invoking url
     const API_GATEWAY_URL = '';
@@ -48,14 +56,20 @@ export default function NameVetterFrontend(){
                 method: 'POST', // post request bc sending data
                 headers: {'Content-Type': 'application/json'}, // tells AWS that this is sending JSON data
                 body: JSON.stringify({targetName: name}),//body is taking the "name" the user typed and packaging it into an object and turns it into text string to let it travel thru the internet.
-            })//fetch
+            });//fetch
             if (!response.ok){
                 throw new Error('HTTP error! status: ${response.status}');
             }// if (!response.ok)
+            const data = await response.json();
+            setResult(data); // converts the response from text to repoense.json() ... JS object... and saves it into result memory only AFTER checking that it takes in a successful response
+
         }//try
-        
+        catch(err){
+            setError(err.message);
+        }finally{
+            setLoading(false);
+        }
+    }; //const vetName = async(e)=>
 
-
-    } //const vetName = async(e)=>
 
 } //export default function NameVetterFrontend()
