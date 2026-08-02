@@ -1,0 +1,263 @@
+/* =========================================
+   CSS Variables (Theming & Font Sizes)
+   ========================================= */
+.vetter-wrapper {
+  /* Default Light Theme Colors */
+  --bg-color: #f9f9f9;
+  --container-bg: #ffffff;
+  --text-color: #333333;
+  --border-color: #cccccc;
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --error-bg: #ffe6e6;
+  --error-text: #cc0000;
+  
+  /* Default Typography */
+  --font-base: 16px;
+
+  /* Apply defaults */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: var(--font-base);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Dark Mode Overrides */
+.vetter-wrapper.theme-dark {
+  --bg-color: #121212;
+  --container-bg: #1e1e1e;
+  --text-color: #f1f1f1;
+  --border-color: #444444;
+  --primary-color: #4da3ff;
+  --primary-hover: #80bfff;
+  --error-bg: #4d0000;
+  --error-text: #ff9999;
+}
+
+/* Font Size Overrides */
+.vetter-wrapper.font-small {
+  --font-base: 14px;
+}
+.vetter-wrapper.font-large {
+  --font-base: 20px;
+}
+
+/* =========================================
+   Layout & Container
+   ========================================= */
+.vetter-container {
+  background-color: var(--container-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  transition: all 0.3s ease;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* =========================================
+   Settings Bar (Language, Theme, Font)
+   ========================================= */
+.settings-bar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.settings-bar select {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* =========================================
+   Form Elements
+   ========================================= */
+.vetter-form-complex {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Language Swap Row */
+.language-swap-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.lang-select {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+.swap-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.swap-button:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Input & Submit Row */
+.input-submit-row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Wrapper for the Input + Clear (X) Button */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.vetter-input {
+  width: 100%;
+  padding: 12px 40px 12px 15px; /* Extra padding on right for the X button */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--container-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.vetter-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.clear-button:hover {
+  opacity: 1;
+  color: var(--error-text);
+}
+
+.vetter-button {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.vetter-button:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+}
+
+.vetter-button:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* =========================================
+   Messages & Results
+   ========================================= */
+.vetter-error {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-text);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.vetter-result {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.vetter-result h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.vetter-pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: monospace;
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* =========================================
+   Responsive Design
+   ========================================= */
+@media (min-width: 600px) {
+  .input-submit-row {
+    flex-direction: row;
+  }
+  
+  .input-wrapper {
+    flex: 1;
+  }
+  
+  .vetter-button {
+    width: auto;
+    padding: 12px 25px;
+  }
+}

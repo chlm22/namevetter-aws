@@ -1,0 +1,86 @@
+/* =========================================
+   Safety Card Container
+   ========================================= */
+.safety-card {
+  background-color: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+/* =========================================
+   Header & Status Banners
+   ========================================= */
+.safety-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: white;
+  gap: 12px;
+}
+
+/* Status Colors */
+.status-safe {
+  background-color: #28a745; /* Vivid Green */
+}
+
+.status-iffy {
+  background-color: #ffc107; /* Warning Yellow */
+  color: #333333; /* Dark text for contrast on the yellow background */
+}
+
+.status-avoid {
+  background-color: #dc3545; /* Alert Red */
+}
+
+.status-default {
+  background-color: #6c757d; /* Neutral Gray fallback */
+}
+
+.status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-text {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   Body & Text Content
+   ========================================= */
+.safety-body {
+  padding: 20px;
+}
+
+.safety-section {
+  margin-bottom: 20px;
+}
+
+.safety-section:last-child {
+  margin-bottom: 0;
+}
+
+.safety-section h5 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.safety-section p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-color);
+  font-size: 1rem;
+}

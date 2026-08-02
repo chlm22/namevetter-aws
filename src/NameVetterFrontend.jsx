@@ -1,6 +1,7 @@
 //importing useState Hook from React Library
 import { useState } from "react";
 import "./NameVetterFrontend.css";
+import SafetyCard from './SafetyCard';
 
 const SUPPORTED_LANGS = [
   { code: "en", label: "English" },
@@ -144,7 +145,7 @@ title: "NameVetter",
 
     //filter out the weird characters
     //let the input only get the letters, spaces, hyphens and apostrophes
-    const nameRegex = /^[a-zA-Z\s'-]+$/;
+    const nameRegex = /^[\p{L}\s'-]+$/u;
     if (!nameRegex.test(cleanName)) {
       setError(
         "Invalid characters have been detected Please use only letters, spaces, hyphens and apostrophes.",
@@ -302,11 +303,10 @@ title: "NameVetter",
 
         {/* Temporary raw JSON output until we build the SafetyCards */}
         {result && (
-          <div className="vetter-result" aria-live="polite">
+          <div className="veter-result" aria-live="polite">
             <h3>{currentSiteTranslation.resultTitle}</h3>
-            <pre className="vetter-pre">
-              {JSON.stringify(result, null, 2)}
-            </pre>
+           {/* We pass the 'result' data from AWS directly into the card */}
+            <SafetyCard data={result} />
           </div>
         )}
       </div>
