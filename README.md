@@ -1,4 +1,4 @@
-Welcome to NameVetter - AWS version! 🎉
+<b>Welcome to NameVetter - AWS version! 🎉</b>
 
 Due to my Microsoft Azure student account expiring the services after graduating,
 I decided to familiarize myself with AWS more.
@@ -7,7 +7,7 @@ NameVetter - AWS is a full-stack, serverless web application designed to perform
 
 Developed by Hae In Lee, this project utilizes a modern serverless architecture on AWS for maximum scalability and lightning-fast performance.
 
-✨ Features
+<b>✨ Features</b>
 🧠 AI-Powered Cultural Vetting: Utilizes Amazon Bedrock's Nova Micro model to provide highly accurate, culturally aware nuances and safety categorizations.
 
 ⚡ Serverless Architecture: Built entirely on AWS Lambda and API Gateway, ensuring rapid response times and zero server maintenance.
@@ -18,7 +18,8 @@ Developed by Hae In Lee, this project utilizes a modern serverless architecture 
 
 🔒 Robust Error Handling: Includes strict prompt engineering (separating system instructions from user data) to completely eliminate AI hallucinations and ensure reliable JSON payloads.
 
-🛠️ Tech Stack
+
+<b>🛠️ Tech Stack</b>
 Frontend:
 
 React.js
@@ -37,7 +38,8 @@ Amazon API Gateway (with fully configured CORS)
 
 Amazon Bedrock (amazon.nova-micro-v1:0 model) via the AWS SDK (@aws-sdk/client-bedrock-runtime)
 
-🚀 Getting Started
+
+<b>🚀 Getting Started</b>
 Prerequisites
 Node.js installed locally
 
@@ -71,7 +73,8 @@ Set up an HTTP/REST API in AWS API Gateway, link it to your Lambda, and enable C
 
 Update the API_GATEWAY_URL in your frontend NameVetterFrontend.jsx file to point to your new endpoint.
 
-💡 How It Works
+
+<b>💡 How It Works </b>
 The user inputs a word, selects the origin language, and selects the target language in the React frontend.
 
 The frontend ensures a clean state and sends a stringified JSON payload via fetch to the AWS API Gateway.
@@ -86,5 +89,6 @@ The Lambda function parses the AI's response and sends a clean JSON payload back
 
 The React UI updates instantly to display the safety rating and cultural context!
 
-📝 License
+
+<b>📝 License</b>📝 License
 This project is open-source and available under the MIT License.
