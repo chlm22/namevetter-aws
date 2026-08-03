@@ -1,6 +1,9 @@
-Welcome to NameVetter! 🎉
+Welcome to NameVetter - AWS version! 🎉
 
-NameVetter is a full-stack, serverless web application designed to perform deep linguistic and cultural safety checks on names, words, and phrases across multiple global languages. By leveraging generative AI, NameVetter analyzes direct translations, phonetics, and cultural nuances to categorize terms as Safe to Use, Use with Caution, or Avoid, helping users make informed, culturally sensitive decisions.
+Due to my Microsoft Azure student account expiring the services after graduating,
+I decided to familiarize myself with AWS more.
+
+NameVetter - AWS is a full-stack, serverless web application designed to perform deep linguistic and cultural safety checks on names, words, and phrases across multiple global languages. By leveraging generative AI, NameVetter analyzes direct translations, phonetics, and cultural nuances to categorize terms as Safe to Use, Use with Caution, or Avoid, helping users make informed, culturally sensitive decisions.
 
 Developed by Hae In Lee, this project utilizes a modern serverless architecture on AWS for maximum scalability and lightning-fast performance.
 
