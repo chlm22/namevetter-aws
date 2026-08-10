@@ -1,4 +1,5 @@
 <b>Welcome to NameVetter - AWS version! 🎉</b>
+[namevetter-frontend-hlee.s3-website-us-east-1.amazonaws.com](http://namevetter-frontend-hlee.s3-website-us-east-1.amazonaws.com/)
 
 Due to my Microsoft Azure student account expiring the services after graduating,
 I decided to familiarize myself with AWS more.
