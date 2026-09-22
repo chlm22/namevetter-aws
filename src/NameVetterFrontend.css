@@ -311,6 +311,11 @@ h2 {
   color: var(--text-color);
 }
 
+.safety-section p {
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
 /* =========================================
    Responsive Design
    ========================================= */
