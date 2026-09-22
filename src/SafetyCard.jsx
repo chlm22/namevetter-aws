@@ -60,7 +60,7 @@ export default function SafetyCard({ data }) {
           </div>
         )}
 
-{phonetic && (
+        {phonetic && (
           <div className="safety-section">
             <h5>Phonetics & Pronunciation</h5>
             <p style={{ whiteSpace: 'pre-line', lineHeight: '1.6' }}>{phonetic}</p>
