@@ -1,5 +1,4 @@
-<b>Welcome to NameVetter - AWS version! 🎉</b>
-[namevetter-frontend-hlee.s3-website-us-east-1.amazonaws.com](http://namevetter-frontend-hlee.s3-website-us-east-1.amazonaws.com/)
+<b>Welcome to NameVetter - AWS version! 🎉</b> ----- HAS BEEN MIGRATED TO DOCKER due to AWS free services expiring on October 12, 2026.
 
 Due to my Microsoft Azure student account expiring the services after graduating,
 I decided to familiarize myself with AWS more.
@@ -93,3 +92,10 @@ The React UI updates instantly to display the safety rating and cultural context
 
 <b>📝 License</b>📝 License
 This project is open-source and available under the MIT License.
+
+
+<b>Pictures of the Website</b>
+<img width="1512" height="982" alt="Screenshot 2026-09-13 at 7 22 36 PM" src="https://github.com/user-attachments/assets/c906472e-c297-4005-a47a-13011ecce718" />
+<img width="1512" height="982" alt="Screenshot 2026-09-13 at 7 22 51 PM" src="https://github.com/user-attachments/assets/c0fd9ceb-b0c1-4ff3-9e0d-19e9cf19c841" />
+<img width="1512" height="982" alt="Screenshot 2026-09-13 at 7 23 31 PM" src="https://github.com/user-attachments/assets/b5676e1b-a9cf-4b8a-a56c-a25cc54394ec" />
+<img width="1512" height="982" alt="Screenshot 2026-09-13 at 7 25 10 PM" src="https://github.com/user-attachments/assets/a1b81e5a-6bc0-44e0-b2e0-a1cff507091f" />
